@@ -1,0 +1,52 @@
+﻿@{
+    Layout = null;
+}
+<nav class="navbar-main">
+    <ul class="nav nav-pills nav-menu_js">
+        <li role="presentation">
+            <div class="buttons-nav">
+                <a href="@Url.Action("Main", "Home")">Главная</a>
+            </div>
+        </li>
+        <li role="presentation">
+            <div class="buttons-nav">
+                <a href="@Url.Action("CommerceBalloon", "Home")">Рекламная продукция</a>
+            </div>
+        </li>
+        <li role="presentation">
+            <div class="buttons-nav">
+                <a href="@Url.Action("Balloons", "Home")">Воздушные шары</a>
+            </div>
+        </li>
+        <li role="presentation">
+            <div class="buttons-nav">
+                <a href="@Url.Action("Arenda", "Home")">Аренда оборудования</a>
+            </div>
+        </li>
+        <li role="presentation">
+            <div class="buttons-nav">
+                <a href="@Url.Action("Svet", "Home")">Декор</a>
+            </div>
+        </li>
+        <li role="presentation">
+            <div class="buttons-nav">
+                <a href="@Url.Action("About", "Home")">Контакты</a>
+            </div>
+        </li>
+    </ul>
+    <div class="fast-order" id="basket-main">
+        <br />
+        <a class="btn btn-cart" target="blank" href="@Url.Action("Basket", "Basket")">
+            Ваша корзина
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+        </a>
+        <div id="basket-main-info" class="basket-main-info">В корзине нет товаров</div>
+        <br/>
+        <button class="btn btn-sm btn-link"
+                data-toggle="modal"
+                data-target="#callMeModal"
+                style="color: #fff;">
+            обратный звонок
+        </button>
+    </div>
+</nav>

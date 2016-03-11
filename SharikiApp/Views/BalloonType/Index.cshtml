@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SharikiApp.Core.Models.BalloonType>
+<p>
+    @Html.ActionLink("Добавить тип товара", "Create")
+</p>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>
+            Название типа
+        </th>
+        <th>
+            Порядок
+        </th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Order)
+                </td>
+                <td>
+                    @Html.ActionLink("ред.", "Edit", new { id = item.BalloonTypeId }) |
+                    @Html.ActionLink("уд.", "Delete", new { id = item.BalloonTypeId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

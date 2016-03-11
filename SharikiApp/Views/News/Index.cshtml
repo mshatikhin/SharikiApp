@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SharikiApp.Core.Models.News>
+<p>
+    @Html.ActionLink("Добавить новость", "Create")
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Заголовок
+            </th>
+            <th>
+                Текст
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Text)
+                </td>
+                <td>
+                    @Html.ActionLink("ред.", "Edit", new { id = item.NewsId }) |
+                    @Html.ActionLink("уд.", "Delete", new { id = item.NewsId })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

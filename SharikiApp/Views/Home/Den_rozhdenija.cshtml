@@ -1,0 +1,8 @@
+﻿@using SharikiApp.Models
+@model SharikiApp.Core.Models.Balloon[]
+<div role="tabpanel">
+    @Html.Partial("Navs/BalloonsNav", TypeBallons.Decorate)
+    @Html.Partial("Navs/DecorateNav", TypeDecorate.BirthDay)
+    @Html.Partial("Decorate/_BirthDay")
+    @Html.Partial("_Goods", Model)
+</div>

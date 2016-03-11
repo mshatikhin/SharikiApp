@@ -1,0 +1,20 @@
+﻿@using SharikiApp.Models
+@model SharikiApp.Models.TypeCommerce
+@{
+    Layout = null;
+    var active = "";
+}
+<ul class="nav nav-tabs" role="tablist">
+    @{ active = Model == TypeCommerce.Print ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Pechat_na_sharah")">Печать на шарах</a>
+    </li>
+    @{ active = Model == TypeCommerce.Flags ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Izgotovlenie_flazhkov")">Изготовление флажков</a>
+    </li>
+    @{ active = Model == TypeCommerce.Panno ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Panno_iz_sharov")">Панно из шаров</a>
+    </li>
+</ul>

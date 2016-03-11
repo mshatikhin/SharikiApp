@@ -1,0 +1,12 @@
+﻿@using SharikiApp.Models
+@model SharikiApp.Models.BalloonsModel
+@if (Model != null)
+{
+    <div role="tabpanel">
+        @Html.Partial("Navs/BalloonsNav", TypeBallons.SearchResults)
+        <div role="tabpanel" class="tab-pane active" id="shariki">
+            @Html.Partial("_Goods", Model.Balloons)
+        </div>
+    </div>
+    Html.RenderPartial("BalloonsInfo", Model.SelectedBalloonTypeM);
+}

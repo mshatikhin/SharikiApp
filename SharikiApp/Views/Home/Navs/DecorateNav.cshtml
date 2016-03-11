@@ -1,0 +1,23 @@
+﻿@*@using SharikiApp.Models
+@{
+    Layout = null;
+    var active = "";
+}
+<ul class="nav nav-tabs" role="tablist">
+    @{ active = Model == TypeDecorate.Main ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Jelementy_oformlenija")">Элементы оформления</a>
+    </li>
+    @{ active = Model == TypeDecorate.Svadba ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Svadba")">Свадьба</a>
+    </li>
+    @{ active = Model == TypeDecorate.BirthDay ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Den_rozhdenija")">День рождения</a>
+    </li>
+    @{ active = Model == TypeDecorate.RodDom ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Vypiska_iz_roddoma")">Малыш родился</a>
+    </li>
+</ul>*@

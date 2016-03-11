@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+<!-- Modal -->
+<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            @using (Html.BeginForm("NewRequest", "Basket", FormMethod.Post))
+            {
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="orderModalLabel">Оформление заказа</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label">Ваше имя</label>
+                        <input type="text" name="FromName" class="form-control" value="" placeholder="Ваше имя" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label text-danger">Ваш телефон*</label>
+                        <input type="tel" name="Phone" class="form-control" required="" placeholder="Ваш телефон" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Что вы хотите заказать</label>
+                        <textarea cols="12" rows="6" name="Description" class="form-control" id="order-input" value="" placeholder=""></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Оформить заказ</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

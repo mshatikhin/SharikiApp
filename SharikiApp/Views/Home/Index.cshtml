@@ -1,0 +1,31 @@
+﻿@using SharikiApp.Models
+@model SharikiApp.Core.Models.News
+@Html.Partial("~/Views/Shared/Carousel.cshtml")
+@if (Model != null)
+{
+    <div class="row row-banner">
+        <div class="col-md-12">
+            @Html.Raw(Model.Text)
+        </div>
+    </div>
+}
+<div class="row row-banner">
+    <h1 class="title">Наши товары</h1>
+    <div class="col-md-12">
+        @{
+            Html.RenderAction("BalloonsTop", "Home");
+        }
+    </div>
+    <div class="clearfix"></div>
+    <br/>
+    <div class="text-center">
+        <a class="btn btn-lg btn-success" href="@Url.Action("Balloons")">
+            Смотреть больше
+        </a>
+    </div>
+    <br/>
+</div>
+@Html.Partial("_Socials_")
+<div style="display: none;">
+    @ViewBag.Temp
+</div>

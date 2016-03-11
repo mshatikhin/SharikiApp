@@ -1,0 +1,42 @@
+﻿@model SharikiApp.Core.Models.Balloon
+@{
+    Layout = null;
+}
+<div class="good-item">
+    @if (User.Identity.IsAuthenticated && User.Identity.Name == "admin")
+    {
+        <span class="h6 text-muted">Порядок - @Model.Ordering</span>
+        @Html.ActionLink("ред.", "Edit", "Balloons", new {id = @Model.BalloonId}, null)
+    }
+    <figure class="good-item-image">
+        <a href="@Url.Action("Balloon", "Balloons", new {id = Model.BalloonId})" title="@Model.DiscountDescription">
+            <img class="img" src="/@ViewBag.Path/@Model.BalloonImage" alt="@Model.Name" />
+        </a>
+    </figure>
+    <div class="good-item-description">
+        <header title="@Model.Description">
+            <a href="@Url.Action("Balloon", "Balloons", new {id = Model.BalloonId})">@Model.Name</a>
+        </header>
+    </div>
+    <div class="good-item-price" title="@Model.DiscountDescription">
+        @{
+            var cssPrice = string.IsNullOrEmpty(Model.DiscountDescription) ? "" : "hasDiscount";
+        }
+        <label class="@cssPrice">
+            @if (Model.Price.HasValue)
+            {
+                @Model.Price.Value
+            } руб.
+        </label>
+    </div>
+    <div>
+        <input class="add-to-cart-counter" type="number" min="1" max="99999" pattern="[0-9]" step="1" value="1"/>
+        <a class="btn btn-primary btn-sm btn-add-to-cart"
+           data-addtobasket="true"
+           data-balloonid="@Model.BalloonId">
+            в корзину
+        </a>
+        <div class="message-add-to-basket">Товар успешно добавлен</div>
+    </div>
+</div>
+

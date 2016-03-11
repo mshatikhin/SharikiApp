@@ -1,0 +1,45 @@
+﻿@using SharikiApp.Models
+@model SharikiApp.Models.BalloonsModel
+@if (Model != null)
+{
+    <div role="tabpanel">
+        @Html.Partial("Navs/BalloonsNav", TypeBallons.Ballons)
+        <div role="tabpanel" class="tab-pane active" id="shariki">
+            <div class="row row-banner">
+                <div class="col-md-12">
+                    <div class="types-menu">
+                        <ul class="list-unstyled balloon-type-menu list-inline">
+                            <li>
+                                @{
+                                    var css = Model.SelectedBalloonType == null ? "item selected" : "item";
+                                }
+                                <a class="@css" href="/shary_i_podarki">
+                                    Все
+                                </a>
+                            </li>
+                            @foreach (var balloonType in Model.BalloonTypes)
+                            {
+                                <li>
+                                    @if (Model.SelectedBalloonType != null && balloonType.BalloonTypeId == Model.SelectedBalloonType.BalloonTypeId)
+                                    {
+                                        <a class="item selected" href="@Url.Action("Balloons", "Home", new { type = (BalloonTypeM)balloonType.BalloonTypeId })">
+                                            @balloonType.Name
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a class="item" href="@Url.Action("Balloons", "Home", new {type = (BalloonTypeM)balloonType.BalloonTypeId})">
+                                            @balloonType.Name
+                                        </a>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            @Html.Partial("_Goods", Model.Balloons)
+        </div>
+    </div>
+                                        Html.RenderPartial("BalloonsInfo", Model.SelectedBalloonTypeM);
+                                    }

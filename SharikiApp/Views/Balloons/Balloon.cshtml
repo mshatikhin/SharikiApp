@@ -1,0 +1,72 @@
+﻿@model SharikiApp.Models.BalloonModel
+<a class="btn btn-link btn-lg" href="@Url.Action("Balloons","Home")">&larr; Перейти к выбору шариков</a>
+<div class="row row-banner">
+    <div class="col-md-12">
+        <table class="goods-menu-table">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="header-type selected">
+                            <div>
+                                <h3 class="h3">@Model.Balloon.Name</h3>
+                                @if (User.Identity.IsAuthenticated && User.Identity.Name == "admin")
+                                {
+                                    @Html.ActionLink("ред.", "Edit", "Balloons", new { id = @Model.Balloon.BalloonId }, null)
+                                }
+                            </div>
+                        </div>
+                        <table class="balloon-image-table">
+                            <tr>
+                                <td>
+                                    <div class="balloon-image">
+                                        <img class="img" src="/@ViewBag.Path/@Model.Balloon.BalloonImage" alt="@Model.Balloon.Name" title="@Model.Balloon.Description" />
+                                    </div>
+                                </td>
+                                <td style="width: 60%;">
+                                    <h4>@Html.Raw(Model.Balloon.Description)</h4>
+                                    <span>@Html.Raw(@Model.Balloon.AdditionalDescription)</span>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <h5>Цена: @Model.Balloon.Price руб.</h5>
+                                    <div>
+                                        <input class="add-to-cart-counter" type="number" min="1" max="99999" pattern="[0-9]" step="1" value="1" />
+                                        <a class="btn btn-primary btn-sm btn-add-to-cart"
+                                           data-addtobasket="true"
+                                           data-balloonid="@Model.Balloon.BalloonId">
+                                            в корзину
+                                        </a>
+                                        <div class="message-add-to-basket">Товар успешно добавлен</div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row row-banner">
+    <div class="col-md-12">
+        Мы занимаемся доставкой воздушных шаров, наполненных гелием и воздухом, фигур, букетов и композиций из воздушных шаров. <br />
+        Заявку по доставке шаров вы можете сделать по телефону <strong>+7(343) 3281-567</strong>. <br />
+        И в любое время проконтролировать состояние доставки по телефону <strong>+7(922)11-22-866</strong>. <br />
+        Также вы можете оставить свою заявку по электронной почте <a href="mailto:priemka@list.ru">priemka@list.ru</a> <br />
+        <strong>Доставка шаров осуществляется круглосуточно.</strong>
+    </div>
+</div>
+@if (!string.IsNullOrEmpty(Model.Text))
+{
+    <div class="row row-banner">
+        <div class="col-md-12">
+            <h1>@Model.Header</h1>
+            @Html.Raw(Model.Text)
+        </div>
+    </div>
+}

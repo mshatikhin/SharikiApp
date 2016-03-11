@@ -1,0 +1,169 @@
+﻿@model SharikiApp.Models.BasketM
+@if (Model != null && Model.Goods != null && Model.Goods.Count > 0)
+{
+    <div class="row row-banner">
+        <div class="col-md-12">
+            <h2>Ваша корзина</h2>
+            <div class="table-responsive">
+                <table class="table table-hover basket-table" data-basket-table="true">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Товар</th>
+                            <th class="text-left">&nbsp;&nbsp;Система скидок</th>
+                            <th class="text-right" style="width: 140px;">Цена</th>
+                            <th class="text-left" style="width: 70px;">Кол-во</th>
+                            <th class="text-right" style="width: 260px;">Стоимость</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ decimal sum = 0; }
+                        @foreach (var good in Model.Goods)
+                        {
+                            if (good.Balloon.Price.HasValue)
+                            {
+                                sum += good.Count * good.PriceWithDiscount;
+                            }
+                            <tr>
+                                <td>
+                                    <div class="good-item-basket">
+                                        <figure class="good-item-image">
+                                            <a href="@Url.Action("Balloon", "Balloons", new {id = good.Balloon.BalloonId})">
+                                                <img class="img" src="/@ViewBag.Path/@good.Balloon.BalloonImage" alt="@good.Balloon.Name" />
+                                            </a>
+                                        </figure>
+                                    </div>
+                                    <div class="good-item-basket">
+                                        <div class="good-item-description">
+                                            <header>@good.Balloon.Name</header>
+                                            <small>@Html.Raw(@good.Balloon.Description)</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-left">
+                                    <textarea style="outline: none !important;
+                                              border: none !important;
+                                              background: none !important;
+                                              height: 100% !important;
+                                              vertical-align: top !important;
+                                              -moz-resize: none !important;
+                                              -ms-resize: none !important;
+                                              -o-resize: none !important;
+                                              resize: none !important;
+                                              padding: 0 10px !important;
+                                              margin: 0 !important;
+                                              color: #666;
+                                              font-size: 14px;">@good.Balloon.DiscountDescription</textarea>
+                                    </td>
+                                    <td class="text-right">
+                                        <label data-balloon-price-id="@good.Balloon.BalloonId">@good.PriceWithDiscount.ToString("F")</label>&nbsp;руб.
+                                </td>
+                                <td class="text-left" style="width: 70px;">
+                                    <input type="text" pattern="[0-9]" class="form-control" name="count" data-count="true" value="@good.Count" />
+                                </td>
+                                <td class="text-right">
+                                    <label data-item-sum="true"
+                                           data-balloonid="@good.Balloon.BalloonId"
+                                           data-price="@good.PriceWithDiscount">
+                                        @{
+                                            var value = good.Count * good.PriceWithDiscount;
+                                        }
+                                        @value.ToString("F")
+                                </label>&nbsp;руб.
+                            </td>
+                            <td><a href="@Url.Action("RemoveFromBasket", "Basket", new {balloonId = @good.Balloon.BalloonId})">удалить</a></td>
+                        </tr>
+                                            }
+                        <tr>
+                            <td colspan="5">
+                                <div class="pull-right">
+                                    Общая стоимость заказа без учета доставки: <label data-allsum="true">@sum.ToString("F")</label>&nbsp;руб.
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-5 col-md-offset-3">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#dostavka" aria-controls="dostavka" role="tab" data-toggle="tab">Доставка</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#samov" aria-controls="samov" role="tab" data-toggle="tab">Самовывоз</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-5 col-md-offset-3">
+            <div style="background-color: #fff; padding: 0 20px;border: 1px solid #ddd; border-top:none;">
+                @using (Html.BeginForm("SaveBasket", "Basket", FormMethod.Post))
+                {
+                    <br />
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="dostavka">
+                            <div class="form-group">
+                                <label class="control-label">Куда повезём?</label>
+                                <input type="text" name="AddressTo" class="form-control" value="" placeholder="Адрес доставки" />
+                                <div>
+                                    <small class="text-muted">г. Екатеринбург, ул. Циолковского 30 корпус 1, кв. 56</small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Когда доставить?*</label>
+                                <input type="text" name="DateTo" class="form-control datepicker" value="" placeholder="Дата и время доставки" />
+                                <div>
+                                    <small class="text-muted">*Стоимость доставки рассчитывается при подтверждении заказа</small>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="samov"></div>
+                    </div>
+                    <div class="text-danger">@ViewBag.Message</div>
+                    <div class="form-group">
+                        <label class="control-label">Как к вам обращаться?</label>
+                        <input type="text" name="From" class="form-control" value="" placeholder="Ваше имя" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label text-danger">Контактные номер телефона*</label>
+                        <input type="tel" name="Phone" required="" class="form-control" value="" placeholder="Ваш телефон" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Комментарий</label>
+                        <textarea cols="12" rows="6" name="Description" class="form-control" value="" placeholder="Описание"></textarea>
+                    </div>
+                    <div>
+                        Стоимость заказа: <label data-allsum="true">@sum</label>&nbsp;руб.
+                    </div>
+                    <br />
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            Оформить заказ
+                        </button>
+                    </div>
+                    <br />
+                }
+            </div>
+        </div>
+    </div>
+                                            }
+                                            else
+                                            {
+                                                <h4>Корзина пуста, воспользуйтесь <a href="@Url.Action("Balloons","Home")">выбором шариков</a>.</h4>
+                                            }
+
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.min.js")"></script>
+    <script>
+        $(function (parameters) {
+            $(".datepicker").datetimepicker({
+                locale: 'ru'
+            });
+        })
+    </script>
+}

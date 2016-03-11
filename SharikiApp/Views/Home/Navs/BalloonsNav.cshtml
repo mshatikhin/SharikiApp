@@ -1,0 +1,30 @@
+﻿@using SharikiApp.Models
+@model SharikiApp.Models.TypeBallons
+@{
+    Layout = null;
+    var active = "";
+}
+<ul class="nav nav-tabs balloons-nav" role="tablist">
+    @if (Model == TypeBallons.SearchResults)
+    {
+        <li role="presentation" class="active">
+            <a href="">Результаты поиска</a>
+        </li>
+    }
+    @{ active = Model == TypeBallons.Ballons ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Balloons", new {type = (BalloonTypeM?) null})">По категориям</a>
+    </li>
+    @{ active = Model == TypeBallons.Decorate ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Decorate", new {type = (BalloonTypeM?) null})">По праздникам</a>
+    </li>
+    @{ active = Model == TypeBallons.Gifts ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Podarki")">Подарки</a>
+    </li>
+    @{ active = Model == TypeBallons.Speceffects ? "active" : ""; }
+    <li role="presentation" class="@active">
+        <a href="@Url.Action("Specjeffekty")">Спецэффекты</a>
+    </li>
+</ul>

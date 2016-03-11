@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Content/global.css",
+    "inputFile": "Content/global.less"
+  },
+  {
+    "outputFile": "Content/bootstrap-datetimepicker-build.css",
+    "inputFile": "Content/bootstrap-datetimepicker-build.less"
+  }
+]

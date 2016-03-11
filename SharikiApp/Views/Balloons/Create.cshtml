@@ -1,0 +1,151 @@
+﻿@model SharikiApp.Core.Models.Balloon
+@using (Html.BeginForm("Create", "Balloons", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Новый товар</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Тип</label>
+            <div class="col-md-10">
+                @Html.DropDownList("BalloonTypeId", null, htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.BalloonTypeId, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Картинка</label>
+            <div class="col-md-10">
+                <input type="file" name="uploadImages" required class="form-control input-files"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Цена</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Price, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Название</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Описание</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, 6, 12, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Доп описание</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.AdditionalDescription, 6, 12, new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.AdditionalDescription, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Сортировка</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ordering, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ordering, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Скрыть</label>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Hide)
+                    @Html.ValidationMessageFor(model => model.Hide, "", new {@class = "text-danger"})
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <h5>SEO</h5>
+        <div class="form-group">
+            <label class="control-label col-md-2">Title</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SeoTitle, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Keywords</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SeoKeywords, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Description</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SeoDescription, new {htmlAttributes = new {@class = "form-control"}})
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Информация о скидках
+            </label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.DiscountDescription, 6, 12, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.DiscountDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">
+                Формула скидки (1-10:40;11-30:35;31-50:30)
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">H1</label>
+            <div class="col-md-10">                
+                @Html.EditorFor(model => model.Header, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Текст</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Text, 6, 12, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Создать" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+    <script src="~/Scripts/ckeditor/config.js"></script>
+    <script src="~/Scripts/ckeditor/styles.js"></script>
+    <script>
+        CKEDITOR.replace("Description");
+        CKEDITOR.replace("AdditionalDescription");
+        CKEDITOR.replace("Text");
+    </script>
+}

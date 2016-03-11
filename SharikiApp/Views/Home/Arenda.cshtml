@@ -1,0 +1,19 @@
+﻿@model SharikiApp.Models.BalloonsModel
+@if (Model != null)
+{
+    <table class="goods-menu-table">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="goods-menu">
+                        @foreach (var balloon in Model.Balloons)
+                        {
+                            @Html.Partial("_GoodsItem", balloon)
+                        }
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+}

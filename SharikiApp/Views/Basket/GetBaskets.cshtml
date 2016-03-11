@@ -1,0 +1,51 @@
+﻿@model SharikiApp.Core.Models.Basket[]
+@if (Model != null)
+{
+    <div class="row row-banner">
+        @using (Html.BeginForm("Search", "Basket", FormMethod.Get))
+        {
+            <div class="col-md-4">
+                <input type="search" value="" class="form-control" name="searchtext" placeholder="поиск заказа" />
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary">
+                    Найти
+                </button>
+            </div>
+        }
+    </div>
+    foreach (var basket in Model)
+    {
+        <div class="row row-banner">
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Номер заказа</th>
+                            <th>Дата заказа</th>
+                            <th>Описание</th>
+                            <th>От</th>
+                            <th>Телефон</th>
+                            <th>Номер проводки</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="w150"><label class="control-label">@basket.BasketId</label></td>
+                            <td class="w250"><label class="control-label">@basket.DateCreate</label></td>
+                            <td><label class="control-label">@basket.Description</label></td>
+                            <td class="w250"><label class="control-label">@basket.FromName</label></td>
+                            <td class="w250"><label class="control-label">@basket.Phone</label></td>
+                            <td class="w150"><label class="control-label">@basket.BasketNumber</label></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div>
+                    @Html.Raw(basket.Goods)
+                </div>
+            </div>
+        </div>
+    }
+}
+
