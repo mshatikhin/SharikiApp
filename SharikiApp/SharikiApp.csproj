@@ -656,6 +656,10 @@
     <Content Include="Scripts\ckeditor\skins\moono\images\refresh.png" />
     <Content Include="Scripts\ckeditor\styles.js" />
     <Content Include="Scripts\jquery.growl.js" />
+    <Content Include="Scripts\msZoommer.js" />
+    <Content Include="Scripts\msZoommer.min.js">
+      <DependentUpon>msZoommer.js</DependentUpon>
+    </Content>
     <Content Include="sitemap.xml" />
     <Content Include="yandex_5cb5d5671cd2a954.html" />
     <None Include="bundleconfig.json" />

@@ -8,11 +8,11 @@
         <span class="h6 text-muted">Порядок - @Model.Ordering</span>
         @Html.ActionLink("ред.", "Edit", "Balloons", new {id = @Model.BalloonId}, null)
     }
-    <figure class="good-item-image">
+    <div class="good-item-image">
         <a href="@Url.Action("Balloon", "Balloons", new {id = Model.BalloonId})" title="@Model.DiscountDescription">
-            <img class="img" src="/@ViewBag.Path/@Model.BalloonImage" alt="@Model.Name" />
+            <img class="img" data-zoommer="true" src="/@ViewBag.Path/@Model.BalloonImage" alt="@Model.Name" />
         </a>
-    </figure>
+    </div>
     <div class="good-item-description">
         <header title="@Model.Description">
             <a href="@Url.Action("Balloon", "Balloons", new {id = Model.BalloonId})">@Model.Name</a>

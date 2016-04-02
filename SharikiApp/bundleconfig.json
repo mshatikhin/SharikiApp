@@ -4,5 +4,11 @@
     "inputFiles": [
       "Scripts/bootstrap-datetimepicker.js"
     ]
+  },
+  {
+    "outputFileName": "Scripts/msZoommer.js",
+    "inputFiles": [
+      "Scripts/msZoommer.js"
+    ]
   }
 ]
