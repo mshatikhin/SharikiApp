@@ -18,7 +18,7 @@ namespace SharikiApp
             scriptBundle.Include("~/Scripts/spin.js");            
             scriptBundle.Include("~/Scripts/share.js");
             scriptBundle.Include("~/Scripts/jquery.growl.js");
-            scriptBundle.Include("~/Scripts/msZoommer.js");
+            scriptBundle.Include("~/Scripts/zoomsl-3.0.js");
             scriptBundle.Include("~/Scripts/client/*.js");
 
             bundles.Add(scriptBundle);
