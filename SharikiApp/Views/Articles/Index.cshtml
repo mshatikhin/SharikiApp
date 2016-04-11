@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SharikiApp.Core.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Статьи</h2>
+
+<p>
+    @Html.ActionLink("Создать", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Контент
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div style="height: 200px;overflow: auto">
+                    @item.ContentText
+            </div>
+        </td>
+        <td>
+            @Html.ActionLink("Ред.", "Edit", new { id = item.ArticleId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id = item.ArticleId })
+        </td>
+    </tr>
+    }
+
+</table>

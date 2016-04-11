@@ -28,5 +28,10 @@ namespace SharikiApp.Models
         {
             return dataCache.GetNews().Values.ToArray();
         }
+
+        public Article[] GetArticles()
+        {
+            return dataCache.GetArticles().Values.ToArray();
+        }
     }
 }

@@ -10,14 +10,20 @@ namespace SharikiApp.Models.Cache
         private IDictionary<int, Balloon> balloons;
         private IDictionary<int, BalloonType> balloonTypes;
         private IDictionary<int, News> news;
+        private IDictionary<int, Article> articles;
 
         private readonly IBalloonRepository balloonRepository;
         private readonly INewsRepository newsRepository;
+        private readonly IArticleRepository articleRepository;
 
-        public DataCache(IBalloonRepository balloonRepository, INewsRepository newsRepository)
+        public DataCache(
+            IBalloonRepository balloonRepository, 
+            INewsRepository newsRepository, 
+            IArticleRepository articleRepository)
         {
             this.balloonRepository = balloonRepository;
             this.newsRepository = newsRepository;
+            this.articleRepository = articleRepository;
         }
 
         public void ReloadBalloons()
@@ -86,6 +92,14 @@ namespace SharikiApp.Models.Cache
             }
         }
 
+        public IDictionary<int, Article> GetArticles()
+        {
+            lock (syncRoot)
+            {
+                return articles ?? (articles = BuildDictionaryArticles());
+            }
+        }
+
         private IDictionary<int, News> BuildDictionaryNews()
         {
             var newses = newsRepository.GetNews().ToArray();
@@ -96,6 +110,12 @@ namespace SharikiApp.Models.Cache
         {
             var balloonTypesArray = balloonRepository.GetBalloonsTypes().ToArray();
             return balloonTypesArray.ToDictionary(p => p.BalloonTypeId);
+        }
+
+        private IDictionary<int, Article> BuildDictionaryArticles()
+        {
+            var arr = articleRepository.GetArticles().ToArray();
+            return arr.ToDictionary(p => p.ArticleId);
         }
     }
 }

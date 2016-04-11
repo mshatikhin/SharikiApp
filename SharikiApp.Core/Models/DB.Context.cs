@@ -27,11 +27,11 @@ namespace SharikiApp.Core.Models
     
         public virtual DbSet<Album> Albums { get; set; }
         public virtual DbSet<Basket> Baskets { get; set; }
-        public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<BalloonType> BalloonTypes { get; set; }
         public virtual DbSet<Balloon> Balloons { get; set; }
+        public virtual DbSet<Article> Articles { get; set; }
     }
 }

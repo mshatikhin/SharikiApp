@@ -7,5 +7,6 @@ namespace SharikiApp.Models
         Balloon[] GetBalloons(int? balloonTypeId);
         BalloonType[] GetBalloonsTypes();
         News[] GetNews();
+        Article[] GetArticles();
     }
 }

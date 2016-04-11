@@ -12,5 +12,6 @@ namespace SharikiApp.Models.Cache
         IDictionary<int, Balloon> GetBalloons();
         IDictionary<int, BalloonType> GetBalloonTypes();
         IDictionary<int, News> GetNews();
+        IDictionary<int, Article> GetArticles();
     }
 }

@@ -12,15 +12,9 @@ namespace SharikiApp.Core.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Blog
+    public partial class Article
     {
-        public int BlogId { get; set; }
-        public string Header { get; set; }
+        public int ArticleId { get; set; }
         public string ContentText { get; set; }
-        public System.DateTime Date { get; set; }
-        public int UserId { get; set; }
-        public string ImageUrl { get; set; }
-    
-        public virtual User User { get; set; }
     }
 }

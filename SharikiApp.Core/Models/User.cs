@@ -17,7 +17,6 @@ namespace SharikiApp.Core.Models
         public User()
         {
             this.Albums = new HashSet<Album>();
-            this.Blogs = new HashSet<Blog>();
             this.News = new HashSet<News>();
         }
     
@@ -28,7 +27,6 @@ namespace SharikiApp.Core.Models
         public string Name { get; set; }
     
         public virtual ICollection<Album> Albums { get; set; }
-        public virtual ICollection<Blog> Blogs { get; set; }
         public virtual ICollection<News> News { get; set; }
     }
 }

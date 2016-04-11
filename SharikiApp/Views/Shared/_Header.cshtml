@@ -32,13 +32,14 @@
                             админка
                             <span class="caret"></span>
                         </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="adminMenu">
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="adminMenu" style="margin-top: -5px;">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("GetBaskets", "Basket")">Поиск заказа</a></li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Balloons")">Товары</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "News")">Новости</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "BalloonType")">Типы товаров</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Warm", "Home")" target="blank">Сбросить кэш</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Index", "Articles")" target="blank">Статьи</a></li>
                             <li role="presentation" class="divider"></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("LogOff", "Account")">Выйти</a></li>
                         </ul>

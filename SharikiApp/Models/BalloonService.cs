@@ -5,6 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Web;
+using SharikiApp.Controllers;
 using SharikiApp.Core.Models;
 
 namespace SharikiApp.Models
@@ -48,6 +49,7 @@ namespace SharikiApp.Models
             balloonProvider.GetBalloons(null);
             balloonProvider.GetBalloonsTypes();
             balloonProvider.GetNews();
+            balloonProvider.GetArticles();
         }
 
         public News GetTopNews()
@@ -82,6 +84,11 @@ namespace SharikiApp.Models
                 }
             }
             return null;
+        }
+
+        public Article GetArticle(ArticleTypeM articleTypeM)
+        {
+            return balloonProvider.GetArticles().SingleOrDefault(a => a.ArticleId == (int)articleTypeM);
         }
     }
 }

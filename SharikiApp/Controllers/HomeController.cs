@@ -448,5 +448,11 @@ namespace SharikiApp.Controllers
             ViewBag.Path = VirtualPathRootName;
             return View("BalloonsTop", model);
         }
+
+        public string GetArticle(ArticleTypeM type)
+        {
+            var article = balloonService.GetArticle(type);
+            return article == null ? "" : article.ContentText;
+        }
     }
 }

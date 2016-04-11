@@ -15,6 +15,13 @@
           <Property Name="Hide" Type="bit" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContentText" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="Balloon">
           <Key>
             <PropertyRef Name="BalloonId" />
@@ -55,17 +62,6 @@
           <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DateCreate" Type="datetime" Nullable="false" />
           <Property Name="Goods" Type="varchar(max)" />
-        </EntityType>
-        <EntityType Name="Blog">
-          <Key>
-            <PropertyRef Name="BlogId" />
-          </Key>
-          <Property Name="BlogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Header" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="ContentText" Type="varchar(max)" Nullable="false" />
-          <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="ImageUrl" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -122,18 +118,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Blog_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Blog">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_News_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="News" Type="Self.News" Multiplicity="*" />
@@ -160,10 +144,10 @@
         </Association>
         <EntityContainer Name="sharikiModelStoreContainer">
           <EntitySet Name="Album" EntityType="Self.Album" Schema="shari_db" store:Type="Tables" />
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="shari_db" store:Type="Tables" />
           <EntitySet Name="Balloon" EntityType="Self.Balloon" Schema="shari_db" store:Type="Tables" />
           <EntitySet Name="BalloonType" EntityType="Self.BalloonType" Schema="shari_db" store:Type="Tables" />
           <EntitySet Name="Basket" EntityType="Self.Basket" Schema="shari_db" store:Type="Tables" />
-          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="shari_db" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="shari_db" store:Type="Tables" />
           <EntitySet Name="Photo" EntityType="Self.Photo" Schema="shari_db" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="shari_db" store:Type="Tables" />
@@ -174,10 +158,6 @@
           <AssociationSet Name="FK_Balloon_BalloonType" Association="Self.FK_Balloon_BalloonType">
             <End Role="BalloonType" EntitySet="BalloonType" />
             <End Role="Balloon" EntitySet="Balloon" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Blog_User" Association="Self.FK_Blog_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Blog" EntitySet="Blog" />
           </AssociationSet>
           <AssociationSet Name="FK_News_User" Association="Self.FK_News_User">
             <End Role="User" EntitySet="User" />
@@ -195,7 +175,6 @@
         <EntityContainer Name="hellraz5_sharikiEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="Albums" EntityType="sharikiModel.Album" />
           <EntitySet Name="Baskets" EntityType="sharikiModel.Basket" />
-          <EntitySet Name="Blogs" EntityType="sharikiModel.Blog" />
           <EntitySet Name="News" EntityType="sharikiModel.News" />
           <EntitySet Name="Photos" EntityType="sharikiModel.Photo" />
           <EntitySet Name="Users" EntityType="sharikiModel.User" />
@@ -207,10 +186,6 @@
             <End Role="Album" EntitySet="Albums" />
             <End Role="Photo" EntitySet="Photos" />
           </AssociationSet>
-          <AssociationSet Name="FK_Blog_User" Association="sharikiModel.FK_Blog_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Blog" EntitySet="Blogs" />
-          </AssociationSet>
           <AssociationSet Name="FK_News_User" Association="sharikiModel.FK_News_User">
             <End Role="User" EntitySet="Users" />
             <End Role="News" EntitySet="News" />
@@ -221,6 +196,7 @@
             <End Role="BalloonType" EntitySet="BalloonTypes" />
             <End Role="Balloon" EntitySet="Balloons" />
           </AssociationSet>
+          <EntitySet Name="Articles" EntityType="sharikiModel.Article" />
         </EntityContainer>
         <EntityType Name="Album">
           <Key>
@@ -245,18 +221,6 @@
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Goods" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Blog">
-          <Key>
-            <PropertyRef Name="BlogId" />
-          </Key>
-          <Property Name="BlogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Header" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ContentText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="User" Relationship="sharikiModel.FK_Blog_User" FromRole="Blog" ToRole="User" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -291,7 +255,6 @@
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Albums" Relationship="sharikiModel.FK_Album_User" FromRole="User" ToRole="Album" />
-          <NavigationProperty Name="Blogs" Relationship="sharikiModel.FK_Blog_User" FromRole="User" ToRole="Blog" />
           <NavigationProperty Name="News" Relationship="sharikiModel.FK_News_User" FromRole="User" ToRole="News" />
         </EntityType>
         <Association Name="FK_Album_User">
@@ -315,18 +278,6 @@
             </Principal>
             <Dependent Role="Photo">
               <PropertyRef Name="AlbumId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Blog_User">
-          <End Type="sharikiModel.User" Role="User" Multiplicity="1" />
-          <End Type="sharikiModel.Blog" Role="Blog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Blog">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -385,6 +336,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleId" />
+          </Key>
+          <Property Name="ArticleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContentText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -412,18 +370,6 @@
                 <ScalarProperty Name="FromName" ColumnName="FromName" />
                 <ScalarProperty Name="BasketNumber" ColumnName="BasketNumber" />
                 <ScalarProperty Name="BasketId" ColumnName="BasketId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Blogs">
-            <EntityTypeMapping TypeName="sharikiModel.Blog">
-              <MappingFragment StoreEntitySet="Blog">
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="ContentText" ColumnName="ContentText" />
-                <ScalarProperty Name="Header" ColumnName="Header" />
-                <ScalarProperty Name="BlogId" ColumnName="BlogId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -489,6 +435,14 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="BalloonTypeId" ColumnName="BalloonTypeId" />
                 <ScalarProperty Name="BalloonId" ColumnName="BalloonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="sharikiModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="ContentText" ColumnName="ContentText" />
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

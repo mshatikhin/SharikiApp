@@ -70,6 +70,7 @@ namespace SharikiApp.App_Start
             kernel.Bind<IBalloonRepository>().To<BalloonRepository>();
             kernel.Bind<IBasketRepository>().To<BasketRepository>();
             kernel.Bind<INewsRepository>().To<NewsRepository>();
+            kernel.Bind<IArticleRepository>().To<ArticleRepository>();
 
             kernel.Bind<IBalloonService>().To<BalloonService>();
             kernel.Bind<IMailer>().To<Mailer>();

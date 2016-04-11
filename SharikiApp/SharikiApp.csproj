@@ -51,11 +51,12 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -138,6 +139,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\BalloonsController.cs" />
     <Compile Include="Controllers\BalloonTypeController.cs" />
     <Compile Include="Controllers\BasketController.cs" />
@@ -150,6 +152,7 @@
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="Helpers\AuthorizationService.cs" />
     <Compile Include="Helpers\AuthorizeAttribute.cs" />
+    <Compile Include="Models\ArticleRepository.cs" />
     <Compile Include="Models\BalloonModel.cs" />
     <Compile Include="Models\BalloonProvider.cs" />
     <Compile Include="Models\BalloonRepository.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="Models\Cache\IDataCache.cs" />
     <Compile Include="Models\Discount.cs" />
     <Compile Include="Models\Good.cs" />
+    <Compile Include="Models\IArticleRepository.cs" />
     <Compile Include="Models\IBalloonProvider.cs" />
     <Compile Include="Models\IBalloonRepository.cs" />
     <Compile Include="Models\IBalloonService.cs" />
@@ -865,6 +869,10 @@
     <Content Include="Views\Home\NewYear.cshtml" />
     <Content Include="Views\Home\BalloonsTop.cshtml" />
     <Content Include="Views\Home\BalloonsResults.cshtml" />
+    <Content Include="Views\Articles\Create.cshtml" />
+    <Content Include="Views\Articles\Delete.cshtml" />
+    <Content Include="Views\Articles\Edit.cshtml" />
+    <Content Include="Views\Articles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
