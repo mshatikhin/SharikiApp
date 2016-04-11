@@ -31,5 +31,9 @@
         TorjestOpen = 38,
         NewYear = 39,
         Lubimim = 40,
+        VipuskSchool = 41,
+        NineMaya = 42,
+        OneMaya = 43,
+
     }
 }
