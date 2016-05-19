@@ -378,6 +378,26 @@
     <Content Include="Content\printedBalloons\17.png" />
     <Content Include="Content\printedBalloons\18.png" />
     <Content Include="Content\printedBalloons\19.png" />
+    <Content Include="Content\printedBalloons\2 %281%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2810%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2811%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2812%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2813%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2814%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2815%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2816%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2817%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2818%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2819%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %282%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %2820%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %283%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %284%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %285%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %286%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %287%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %288%29.jpg" />
+    <Content Include="Content\printedBalloons\2 %289%29.jpg" />
     <Content Include="Content\printedBalloons\2.png" />
     <Content Include="Content\printedBalloons\20.png" />
     <Content Include="Content\printedBalloons\24.png" />
@@ -665,6 +685,7 @@
       <DependentUpon>zoomsl-3.0.js</DependentUpon>
     </Content>
     <Content Include="sitemap.xml" />
+    <Content Include="Views\Shared\Commerce\novy_prays.htm" />
     <Content Include="yandex_5cb5d5671cd2a954.html" />
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
@@ -873,6 +894,7 @@
     <Content Include="Views\Articles\Delete.cshtml" />
     <Content Include="Views\Articles\Edit.cshtml" />
     <Content Include="Views\Articles\Index.cshtml" />
+    <Content Include="Views\Shared\Commerce\_TablePrint.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
