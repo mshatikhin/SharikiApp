@@ -386,7 +386,7 @@ namespace SharikiApp.Controllers
             ViewBag.Url = SiteName + "svet";
             ViewBag.Keywords = "большой бант на авто заказать";
             ViewBag.Path = VirtualPathRootName;
-            var model = balloonService.Build(null, null).Balloons.Where(b => b.BalloonTypeId == (int)BalloonTypeM.SvetDecor).ToArray();
+            var model = balloonService.Build(null, null).Balloons.Where(b => b.BalloonTypeId == (int)BalloonTypeM.NewYearDecor).ToArray();
             return View("Svet", model);
         }
 
