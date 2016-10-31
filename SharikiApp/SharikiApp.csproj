@@ -185,10 +185,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="apple-touch-icon-ipad-76x76.png" />
-    <Content Include="apple-touch-icon-ipad-retina-152x152.png" />
-    <Content Include="apple-touch-icon-iphone-60x60.png" />
-    <Content Include="apple-touch-icon-iphone-retina-120x120.png" />
     <Content Include="Content\balloons\img0018.png" />
     <Content Include="Content\balloons\img0022.png" />
     <Content Include="Content\balloons\img0024.png" />
@@ -393,7 +389,14 @@
     <Content Include="Content\shapets.png" />
     <Content Include="Content\shapka_1140_kh.png" />
     <Content Include="Content\shapka_novaya.png" />
-    <Content Include="favicon.ico" />
+    <Content Include="favicon\android-chrome-192x192.png" />
+    <Content Include="favicon\apple-touch-icon.png" />
+    <Content Include="favicon\browserconfig.xml" />
+    <Content Include="favicon\favicon-16x16.png" />
+    <Content Include="favicon\favicon-32x32.png" />
+    <Content Include="favicon\favicon.ico" />
+    <Content Include="favicon\mstile-150x150.png" />
+    <Content Include="favicon\safari-pinned-tab.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\bootstrap\bootstrap.css.map">
@@ -748,6 +751,7 @@
     <Content Include="Content\bootstrap\bootstrap.less" />
     <Content Include="Content\bootstrap\badges.less" />
     <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="favicon\manifest.json" />
     <None Include="Properties\PublishProfiles\sharikekb.ru - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\sharikiapp.pubxml" />
     <Content Include="Scripts\bootstrap.min.js.map">
