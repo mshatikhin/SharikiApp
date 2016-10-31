@@ -392,6 +392,7 @@
     <None Include="Content\_bootstrap-datetimepicker.less" />
     <Content Include="Content\shapets.png" />
     <Content Include="Content\shapka_1140_kh.png" />
+    <Content Include="Content\shapka_novaya.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
