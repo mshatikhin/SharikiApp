@@ -4,9 +4,9 @@
     @Html.Partial("Navs/BalloonsNav", TypeBallons.Decorate)
     <div role="tabpanel" class="tab-pane active" id="shariki">
         <div class="row row-banner">
-            <div class="col-md-12">
+            <div class="col-md-3">
                 <div class="types-menu">
-                    <ul class="list-unstyled balloon-type-menu list-inline">
+                    <ul class="list-unstyled balloon-type-menu">
                         <li>
                             @{
                                 var css = Model.SelectedBalloonType == null ? "item selected" : "item";
@@ -35,8 +35,8 @@
                     </ul>
                 </div>
             </div>
+            @Html.Partial("_Goods", Model.Balloons)
         </div>
-        @Html.Partial("_Goods", Model.Balloons)
         @{
             Html.RenderPartial("BalloonsInfo", Model.SelectedBalloonTypeM);
         }

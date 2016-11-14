@@ -1,28 +1,26 @@
 ﻿@model SharikiApp.Core.Models.Balloon[]
 @if (Model != null)
 {
-    <div class="row row-banner">
-        <div class="col-md-12">
-            <table class="goods-menu-table">
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="goods-menu">
-                                @if (Model.Length == 0)
-                                {
-                                    <div class="header-type">
-                                        <span>Товара нет в наличии.</span>
-                                    </div>
-                                }
-                                @foreach (var balloon in Model)
-                                {
-                                    @Html.Partial("_GoodsItem", balloon)
-                                }
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="col-md-9">
+        <table class="goods-menu-table">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="goods-menu">
+                            @if (Model.Length == 0)
+                            {
+                                <div class="header-type">
+                                    <span>Товара нет в наличии.</span>
+                                </div>
+                            }
+                            @foreach (var balloon in Model)
+                            {
+                                @Html.Partial("_GoodsItem", balloon)
+                            }
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 }
