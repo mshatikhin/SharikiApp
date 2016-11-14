@@ -525,13 +525,11 @@ hr {
   text-decoration: none;
   color: #222;
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-  border: 1px solid #9C9387;
   padding: 2px 12px;
   margin: 4px 2px;
-  line-height: 32px;
-  text-align: center;
   border-radius: 5px;
-  background: #ebe3d7;
+  line-height: 32px;
+  text-align: left;
   -moz-transition: 0.2s all ease-in-out;
   -o-transition: 0.2s all ease-in-out;
   -webkit-transition: 0.2s all ease-in-out;
